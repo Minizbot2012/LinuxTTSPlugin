@@ -1,0 +1,20 @@
+C:\Users\Administrator\source\repos\LinuxTTSPlugin\LinuxTTSPlugin\bin\Debug\LinuxTTSPlugin.dll
+C:\Users\Administrator\source\repos\LinuxTTSPlugin\LinuxTTSPlugin\bin\Debug\LinuxTTSPlugin.pdb
+C:\Users\Administrator\source\repos\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.dll
+C:\Users\Administrator\source\repos\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.pdb
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\bin\Debug\LinuxTTSPlugin.dll
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\bin\Debug\LinuxTTSPlugin.pdb
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\bin\Debug\Advanced Combat Tracker.exe
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\bin\Debug\GammaJul.LgLcd.dll
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\bin\Debug\Trinet.Core.IO.Ntfs.dll
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\bin\Debug\Advanced Combat Tracker.exe.config
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.csprojAssemblyReference.cache
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.Plugin.resources
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.csproj.GenerateResource.cache
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.csproj.CoreCompileInputs.cache
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.csproj.CopyComplete
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.dll
+D:\Games\XIV\Linux\ACT_Linux_TTS_Plugin_Test_espeak\LinuxTTSPlugin\LinuxTTSPlugin\obj\Debug\LinuxTTSPlugin.pdb
