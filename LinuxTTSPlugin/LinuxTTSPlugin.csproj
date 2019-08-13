@@ -32,7 +32,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
-      <HintPath>A:\Games\SquareEnix\apps\ACTv3\Advanced Combat Tracker.exe</HintPath>
+      <HintPath>.\ExternalLibraries\Advanced Combat Tracker.exe</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,14 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs">
+    <Compile Include="LinuxTTSPluginGui.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LinuxTTSPlugin.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TTSHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Class1.resx">
-      <DependentUpon>Class1.cs</DependentUpon>
+    <EmbeddedResource Include="LinuxTTSPluginGui.resx">
+      <DependentUpon>LinuxTTSPluginGui.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
