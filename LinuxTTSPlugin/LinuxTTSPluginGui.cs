@@ -55,7 +55,7 @@ namespace LinuxTTSPlugin
             // opnTTS
             // 
             this.opnTTS.FileName = "Select TTS Binary";
-            this.opnTTS.FileOk += new System.ComponentModel.CancelEventHandler(this.opnTTS_FileOk);
+            this.opnTTS.FileOk += new System.ComponentModel.CancelEventHandler(this.OpnTTS_FileOk);
             // 
             // tabs
             // 
@@ -167,7 +167,7 @@ namespace LinuxTTSPlugin
             this.btnSelectBinary.TabIndex = 10;
             this.btnSelectBinary.Text = "Select TTS Binary";
             this.btnSelectBinary.UseVisualStyleBackColor = true;
-            this.btnSelectBinary.Click += new System.EventHandler(this.btnSelectBinary_Click);
+            this.btnSelectBinary.Click += new System.EventHandler(this.BtnSelectBinary_Click);
             // 
             // txtArguments
             // 
@@ -178,19 +178,19 @@ namespace LinuxTTSPlugin
             this.txtArguments.Size = new System.Drawing.Size(591, 20);
             this.txtArguments.TabIndex = 11;
             this.txtArguments.Text = "-a 15 -g 0 -p 50 -s 175";
+            this.txtArguments.Leave += new System.EventHandler(this.TxtArguments_Leave);
             // 
             // chkUsePipe
             // 
             this.chkUsePipe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.chkUsePipe.AutoSize = true;
-            this.chkUsePipe.Checked = true;
-            this.chkUsePipe.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkUsePipe.Location = new System.Drawing.Point(78, 29);
             this.chkUsePipe.Name = "chkUsePipe";
             this.chkUsePipe.Size = new System.Drawing.Size(15, 20);
             this.chkUsePipe.TabIndex = 12;
             this.chkUsePipe.UseVisualStyleBackColor = true;
+            this.chkUsePipe.CheckedChanged += new System.EventHandler(this.ChkUsePipe_CheckedChanged);
             // 
             // tpLog
             // 
@@ -246,12 +246,12 @@ namespace LinuxTTSPlugin
         private ListBox lstLogs;
         private OpenFileDialog opnTTS;
         
-        private void btnSelectBinary_Click(object sender, EventArgs e)
+        private void BtnSelectBinary_Click(object sender, EventArgs e)
         {
             opnTTS.ShowDialog();
         }
 
-        private void opnTTS_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        private void OpnTTS_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             txtTTSBinaryPath.Text = opnTTS.FileName;
             ttsHandler.Command = opnTTS.FileName;
@@ -261,7 +261,7 @@ namespace LinuxTTSPlugin
             }
         }
 
-        private void chkUsePipe_CheckedChanged(object sender, EventArgs e)
+        private void ChkUsePipe_CheckedChanged(object sender, EventArgs e)
         {
             if (chkUsePipe.Checked)
             {
@@ -272,11 +272,12 @@ namespace LinuxTTSPlugin
             }
         }
 
-        private void txtArguments_Leave(object sender, EventArgs e)
+        private void TxtArguments_Leave(object sender, EventArgs e)
         {
             ttsHandler.CommandArguments = txtArguments.Text;
             if (chkUsePipe.Checked)
             {
+                ttsHandler.CommandArguments += " --stdin";
                 ttsHandler.Restart();
             }
         }
