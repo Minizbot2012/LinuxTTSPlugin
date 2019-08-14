@@ -29,14 +29,19 @@ namespace LinuxTTSPlugin
             this.Dock = DockStyle.Fill; // Expand the UserControl to fill the tab's client space
             xmlSettings = new SettingsSerializer(this); // Create a new settings serializer and pass it this instance
             LoadSettings();
+            ttsHandler.Command = txtTTSBinaryPath.Text;
+            ttsHandler.CommandArguments = txtArguments.Text;
 
             oldTTSMethod = ActGlobals.oFormActMain.PlayTtsMethod;
             lblStatus.Text = "Plugin Started";
 
-            if (!ttsHandler.Open())
+            if (chkUsePipe.Checked)
             {
-                Console.WriteLine(ttsHandler.LastException.ToString());
-                lstLogs.Items.Add("Exception trying to open TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
+                if (!ttsHandler.Open())
+                {
+                    Console.WriteLine(ttsHandler.LastException.ToString());
+                    Console.WriteLine("Exception trying to open TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
+                }
             }
 
             ActGlobals.oFormActMain.PlayTtsMethod = new FormActMain.PlayTtsDelegate(PlayTTS);

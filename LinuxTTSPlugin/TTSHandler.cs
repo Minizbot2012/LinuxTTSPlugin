@@ -11,7 +11,7 @@ namespace LinuxTTSPlugin
 
         public Exception LastException { get; private set; }
 
-        private Process process;
+        private Process process = null;
 
         public TTSHandler()
         {
