@@ -47,8 +47,8 @@ namespace LinuxTTSPlugin
             ActGlobals.oFormActMain.PlayTtsMethod = oldTTSMethod;
 
             if (!ttsHandler.Close()) { 
-                lstLogs.Items.Add(ttsHandler.LastException.ToString());
-                lstLogs.Items.Add("Exception trying to close TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
+                Console.WriteLine(ttsHandler.LastException.ToString());
+                Console.WriteLine("Exception trying to close TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
             }
 
             SaveSettings();
@@ -93,7 +93,7 @@ namespace LinuxTTSPlugin
                 }
                 catch (Exception ex)
                 {
-                    lblStatus.Text = "Error loading settings: " + ex.Message;
+                    lstLogs.Items.Add("Error loading settings: " + ex.Message);
                 }
                 xReader.Close();
             }

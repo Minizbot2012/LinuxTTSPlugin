@@ -36,7 +36,6 @@ namespace LinuxTTSPlugin
             this.opnTTS = new System.Windows.Forms.OpenFileDialog();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tpSettings = new System.Windows.Forms.TabPage();
-            this.tpLog = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTTSBinary = new System.Windows.Forms.Label();
             this.lblArguments = new System.Windows.Forms.Label();
@@ -45,11 +44,12 @@ namespace LinuxTTSPlugin
             this.btnSelectBinary = new System.Windows.Forms.Button();
             this.txtArguments = new System.Windows.Forms.TextBox();
             this.chkUsePipe = new System.Windows.Forms.CheckBox();
+            this.tpLog = new System.Windows.Forms.TabPage();
             this.lstLogs = new System.Windows.Forms.ListBox();
             this.tabs.SuspendLayout();
             this.tpSettings.SuspendLayout();
-            this.tpLog.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tpLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // opnTTS
@@ -78,17 +78,6 @@ namespace LinuxTTSPlugin
             this.tpSettings.TabIndex = 0;
             this.tpSettings.Text = "Settings";
             this.tpSettings.UseVisualStyleBackColor = true;
-            // 
-            // tpLog
-            // 
-            this.tpLog.Controls.Add(this.lstLogs);
-            this.tpLog.Location = new System.Drawing.Point(4, 22);
-            this.tpLog.Name = "tpLog";
-            this.tpLog.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLog.Size = new System.Drawing.Size(678, 358);
-            this.tpLog.TabIndex = 1;
-            this.tpLog.Text = "Logs";
-            this.tpLog.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -178,6 +167,7 @@ namespace LinuxTTSPlugin
             this.btnSelectBinary.TabIndex = 10;
             this.btnSelectBinary.Text = "Select TTS Binary";
             this.btnSelectBinary.UseVisualStyleBackColor = true;
+            this.btnSelectBinary.Click += new System.EventHandler(this.btnSelectBinary_Click);
             // 
             // txtArguments
             // 
@@ -202,6 +192,17 @@ namespace LinuxTTSPlugin
             this.chkUsePipe.TabIndex = 12;
             this.chkUsePipe.UseVisualStyleBackColor = true;
             // 
+            // tpLog
+            // 
+            this.tpLog.Controls.Add(this.lstLogs);
+            this.tpLog.Location = new System.Drawing.Point(4, 22);
+            this.tpLog.Name = "tpLog";
+            this.tpLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tpLog.Size = new System.Drawing.Size(678, 358);
+            this.tpLog.TabIndex = 1;
+            this.tpLog.Text = "Logs";
+            this.tpLog.UseVisualStyleBackColor = true;
+            // 
             // lstLogs
             // 
             this.lstLogs.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -221,9 +222,9 @@ namespace LinuxTTSPlugin
             this.tabs.ResumeLayout(false);
             this.tpSettings.ResumeLayout(false);
             this.tpSettings.PerformLayout();
-            this.tpLog.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tpLog.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -242,6 +243,7 @@ namespace LinuxTTSPlugin
         private TextBox txtArguments;
         private CheckBox chkUsePipe;
         private TabPage tpLog;
+        private ListBox lstLogs;
         private OpenFileDialog opnTTS;
         
         private void btnSelectBinary_Click(object sender, EventArgs e)
@@ -251,14 +253,11 @@ namespace LinuxTTSPlugin
 
         private void opnTTS_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (DialogResult.OK == opnTTS.ShowDialog())
+            txtTTSBinaryPath.Text = opnTTS.FileName;
+            ttsHandler.Command = opnTTS.FileName;
+            if (chkUsePipe.Checked)
             {
-                txtTTSBinaryPath.Text = opnTTS.FileName;
-                ttsHandler.Command = opnTTS.FileName;
-                if (chkUsePipe.Checked)
-                {
-                    ttsHandler.Restart();
-                }
+                ttsHandler.Restart();
             }
         }
 
@@ -281,7 +280,5 @@ namespace LinuxTTSPlugin
                 ttsHandler.Restart();
             }
         }
-
-        private ListBox lstLogs;
     }
 }
