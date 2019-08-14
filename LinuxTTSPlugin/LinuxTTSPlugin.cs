@@ -36,7 +36,7 @@ namespace LinuxTTSPlugin
             if (!ttsHandler.Open())
             {
                 Console.WriteLine(ttsHandler.LastException.ToString());
-                MessageBox.Show("Exception trying to open TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
+                lstLogs.Items.Add("Exception trying to open TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
             }
 
             ActGlobals.oFormActMain.PlayTtsMethod = new FormActMain.PlayTtsDelegate(PlayTTS);
@@ -47,8 +47,8 @@ namespace LinuxTTSPlugin
             ActGlobals.oFormActMain.PlayTtsMethod = oldTTSMethod;
 
             if (!ttsHandler.Close()) { 
-                Console.WriteLine(ttsHandler.LastException.ToString());
-                MessageBox.Show("Exception trying to close TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
+                lstLogs.Items.Add(ttsHandler.LastException.ToString());
+                lstLogs.Items.Add("Exception trying to close TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
             }
 
             SaveSettings();
