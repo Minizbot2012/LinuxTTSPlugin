@@ -15,7 +15,6 @@ namespace LinuxTTSPlugin
 
         public TTSHandler()
         {
-            this.Open(); // to use a process we have to start it first!!
         }
 
         public bool Open()
