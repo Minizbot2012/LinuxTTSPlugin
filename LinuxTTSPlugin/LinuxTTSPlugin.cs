@@ -10,13 +10,10 @@ namespace LinuxTTSPlugin
     public partial class LinuxTTSPlugin : IActPluginV1
     {
         private FormActMain.PlayTtsDelegate oldTTSMethod;
-
         Label lblStatus;    // The status label that appears in ACT's Plugin tab
         readonly string settingsFile = Path.Combine(ActGlobals.oFormActMain.AppDataFolder.FullName, "Config\\LinuxTTSPlugin.config.xml");
         SettingsSerializer xmlSettings;
-
         private TTSHandler ttsHandler;
-
         public LinuxTTSPlugin()
         {
             InitializeComponent();

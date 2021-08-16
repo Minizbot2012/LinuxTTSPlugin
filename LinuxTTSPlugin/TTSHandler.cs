@@ -45,7 +45,9 @@ namespace LinuxTTSPlugin
                     this.LastException = ex;
                     process = null;
                 }
-            } else {
+            }
+            else
+            {
                 this.log.Items.Add("Command not found or process not null");
             }
             return false;
