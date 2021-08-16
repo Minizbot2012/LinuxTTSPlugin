@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace LinuxTTSPlugin
 {
@@ -8,18 +10,18 @@ namespace LinuxTTSPlugin
     {
         public string Command { get; set; }
         public string CommandArguments { get; set; }
-
         public Exception LastException { get; private set; }
-
         private Process process = null;
-
-        public TTSHandler()
+        private FileInfo CommandInfo;
+        private ListBox log;
+        public TTSHandler(ListBox log)
         {
+            this.log = log;
         }
-
         public bool Open()
         {
-            if (process == null)
+            CommandInfo = new FileInfo(Command);
+            if (process == null && CommandInfo.Exists)
             {
                 try
                 {
@@ -39,10 +41,12 @@ namespace LinuxTTSPlugin
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    this.log.Items.Add(ex.ToString());
                     this.LastException = ex;
                     process = null;
                 }
+            } else {
+                Console.WriteLine("Command not found or process not null");
             }
             return false;
         }
@@ -53,7 +57,13 @@ namespace LinuxTTSPlugin
             {
                 if (process == null)
                 {
-                    Open();
+                    var opened = Open();
+                    if (!opened)
+                    {
+                        this.LastException = new Exception("TTSCommand Not Found " + CommandInfo.FullName);
+                        this.log.Items.Add(this.LastException.ToString());
+                        return;
+                    }
                 }
                 process.StandardInput.Write(text.ToLower());
                 process.StandardInput.WriteLine();
@@ -83,7 +93,7 @@ namespace LinuxTTSPlugin
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                this.log.Items.Add(ex.ToString());
                 this.LastException = ex;
             }
         }
@@ -102,7 +112,7 @@ namespace LinuxTTSPlugin
             catch (Exception ex)
             {
                 process = null;
-                Console.WriteLine(ex.ToString());
+                this.log.Items.Add(ex.ToString());
                 this.LastException = ex;
             }
             return false;
@@ -111,6 +121,7 @@ namespace LinuxTTSPlugin
         public void Restart()
         {
             Close();
+            CommandInfo = new FileInfo(Command);
             Open();
         }
     }

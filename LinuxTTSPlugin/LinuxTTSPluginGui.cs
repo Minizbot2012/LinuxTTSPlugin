@@ -65,16 +65,16 @@ namespace LinuxTTSPlugin
             this.tabs.Location = new System.Drawing.Point(0, 0);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(686, 384);
+            this.tabs.Size = new System.Drawing.Size(680, 380);
             this.tabs.TabIndex = 1;
             // 
             // tpSettings
             // 
             this.tpSettings.Controls.Add(this.tableLayoutPanel1);
-            this.tpSettings.Location = new System.Drawing.Point(4, 22);
+            this.tpSettings.Location = new System.Drawing.Point(0, 20);
             this.tpSettings.Name = "tpSettings";
             this.tpSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSettings.Size = new System.Drawing.Size(678, 358);
+            this.tpSettings.Size = new System.Drawing.Size(680, 360);
             this.tpSettings.TabIndex = 0;
             this.tpSettings.Text = "Settings";
             this.tpSettings.UseVisualStyleBackColor = true;
@@ -98,11 +98,11 @@ namespace LinuxTTSPlugin
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(672, 352);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(680, 360);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // lblTTSBinary
@@ -111,9 +111,9 @@ namespace LinuxTTSPlugin
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTTSBinary.AutoSize = true;
-            this.lblTTSBinary.Location = new System.Drawing.Point(3, 52);
+            this.lblTTSBinary.Location = new System.Drawing.Point(3, 50);
             this.lblTTSBinary.Name = "lblTTSBinary";
-            this.lblTTSBinary.Size = new System.Drawing.Size(69, 26);
+            this.lblTTSBinary.Size = new System.Drawing.Size(70, 25);
             this.lblTTSBinary.TabIndex = 8;
             this.lblTTSBinary.Text = "TTS Binary";
             this.lblTTSBinary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,7 +126,7 @@ namespace LinuxTTSPlugin
             this.lblArguments.AutoSize = true;
             this.lblArguments.Location = new System.Drawing.Point(3, 0);
             this.lblArguments.Name = "lblArguments";
-            this.lblArguments.Size = new System.Drawing.Size(69, 26);
+            this.lblArguments.Size = new System.Drawing.Size(70, 25);
             this.lblArguments.TabIndex = 0;
             this.lblArguments.Text = "Arguments";
             this.lblArguments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -137,9 +137,9 @@ namespace LinuxTTSPlugin
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPipe.AutoSize = true;
-            this.lblPipe.Location = new System.Drawing.Point(3, 26);
+            this.lblPipe.Location = new System.Drawing.Point(3, 25);
             this.lblPipe.Name = "lblPipe";
-            this.lblPipe.Size = new System.Drawing.Size(69, 26);
+            this.lblPipe.Size = new System.Drawing.Size(70, 25);
             this.lblPipe.TabIndex = 5;
             this.lblPipe.Text = "Use Pipe";
             this.lblPipe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -149,10 +149,10 @@ namespace LinuxTTSPlugin
             this.txtTTSBinaryPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTTSBinaryPath.Location = new System.Drawing.Point(78, 55);
+            this.txtTTSBinaryPath.Location = new System.Drawing.Point(75, 50);
             this.txtTTSBinaryPath.Name = "txtTTSBinaryPath";
             this.txtTTSBinaryPath.ReadOnly = true;
-            this.txtTTSBinaryPath.Size = new System.Drawing.Size(441, 20);
+            this.txtTTSBinaryPath.Size = new System.Drawing.Size(440, 20);
             this.txtTTSBinaryPath.TabIndex = 9;
             this.txtTTSBinaryPath.Text = "Z:\\usr\\bin\\espeak";
             // 
@@ -161,9 +161,9 @@ namespace LinuxTTSPlugin
             this.btnSelectBinary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectBinary.Location = new System.Drawing.Point(525, 55);
+            this.btnSelectBinary.Location = new System.Drawing.Point(525, 60);
             this.btnSelectBinary.Name = "btnSelectBinary";
-            this.btnSelectBinary.Size = new System.Drawing.Size(144, 20);
+            this.btnSelectBinary.Size = new System.Drawing.Size(150, 20);
             this.btnSelectBinary.TabIndex = 10;
             this.btnSelectBinary.Text = "Select TTS Binary";
             this.btnSelectBinary.UseVisualStyleBackColor = true;
@@ -173,9 +173,9 @@ namespace LinuxTTSPlugin
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txtArguments, 2);
             this.txtArguments.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtArguments.Location = new System.Drawing.Point(78, 3);
+            this.txtArguments.Location = new System.Drawing.Point(75, 3);
             this.txtArguments.Name = "txtArguments";
-            this.txtArguments.Size = new System.Drawing.Size(591, 20);
+            this.txtArguments.Size = new System.Drawing.Size(600, 20);
             this.txtArguments.TabIndex = 11;
             this.txtArguments.Text = "-a 15 -g 0 -p 50 -s 175";
             this.txtArguments.Leave += new System.EventHandler(this.TxtArguments_Leave);
@@ -185,9 +185,9 @@ namespace LinuxTTSPlugin
             this.chkUsePipe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.chkUsePipe.AutoSize = true;
-            this.chkUsePipe.Location = new System.Drawing.Point(78, 29);
+            this.chkUsePipe.Location = new System.Drawing.Point(75, 30);
             this.chkUsePipe.Name = "chkUsePipe";
-            this.chkUsePipe.Size = new System.Drawing.Size(15, 20);
+            this.chkUsePipe.Size = new System.Drawing.Size(20, 20);
             this.chkUsePipe.TabIndex = 12;
             this.chkUsePipe.UseVisualStyleBackColor = true;
             this.chkUsePipe.CheckedChanged += new System.EventHandler(this.ChkUsePipe_CheckedChanged);
@@ -195,10 +195,10 @@ namespace LinuxTTSPlugin
             // tpLog
             // 
             this.tpLog.Controls.Add(this.lstLogs);
-            this.tpLog.Location = new System.Drawing.Point(4, 22);
+            this.tpLog.Location = new System.Drawing.Point(5, 5);
             this.tpLog.Name = "tpLog";
             this.tpLog.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLog.Size = new System.Drawing.Size(678, 358);
+            this.tpLog.Size = new System.Drawing.Size(680, 360);
             this.tpLog.TabIndex = 1;
             this.tpLog.Text = "Logs";
             this.tpLog.UseVisualStyleBackColor = true;
@@ -209,16 +209,16 @@ namespace LinuxTTSPlugin
             this.lstLogs.FormattingEnabled = true;
             this.lstLogs.Location = new System.Drawing.Point(3, 3);
             this.lstLogs.Name = "lstLogs";
-            this.lstLogs.Size = new System.Drawing.Size(672, 352);
+            this.lstLogs.Size = new System.Drawing.Size(680, 360);
             this.lstLogs.TabIndex = 0;
             // 
             // LinuxTTSPlugin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabs);
             this.Name = "LinuxTTSPlugin";
-            this.Size = new System.Drawing.Size(686, 384);
+            this.Size = new System.Drawing.Size(680, 360);
             this.tabs.ResumeLayout(false);
             this.tpSettings.ResumeLayout(false);
             this.tpSettings.PerformLayout();
