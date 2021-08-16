@@ -46,7 +46,7 @@ namespace LinuxTTSPlugin
                     process = null;
                 }
             } else {
-                Console.WriteLine("Command not found or process not null");
+                this.log.Items.Add("Command not found or process not null");
             }
             return false;
         }
