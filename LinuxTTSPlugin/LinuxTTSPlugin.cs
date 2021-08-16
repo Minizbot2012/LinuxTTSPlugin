@@ -12,10 +12,10 @@ namespace LinuxTTSPlugin
         private FormActMain.PlayTtsDelegate oldTTSMethod;
 
         Label lblStatus;    // The status label that appears in ACT's Plugin tab
-        string settingsFile = Path.Combine(ActGlobals.oFormActMain.AppDataFolder.FullName, "Config\\LinuxTTSPlugin.config.xml");
+        readonly string settingsFile = Path.Combine(ActGlobals.oFormActMain.AppDataFolder.FullName, "Config\\LinuxTTSPlugin.config.xml");
         SettingsSerializer xmlSettings;
 
-        private TTSHandler ttsHandler = new TTSHandler();
+        private TTSHandler ttsHandler;
 
         public LinuxTTSPlugin()
         {
@@ -24,6 +24,7 @@ namespace LinuxTTSPlugin
 
         public void InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
         {
+            ttsHandler = new TTSHandler(lstLogs);
             lblStatus = pluginStatusText;   // Hand the status label's reference to our local var
             pluginScreenSpace.Controls.Add(this);   // Add this UserControl to the tab ACT provides
             this.Dock = DockStyle.Fill; // Expand the UserControl to fill the tab's client space
@@ -31,17 +32,12 @@ namespace LinuxTTSPlugin
             LoadSettings();
             ttsHandler.Command = txtTTSBinaryPath.Text;
             ttsHandler.CommandArguments = txtArguments.Text;
-
             oldTTSMethod = ActGlobals.oFormActMain.PlayTtsMethod;
             lblStatus.Text = "Plugin Started";
 
             if (chkUsePipe.Checked)
             {
-                if (!ttsHandler.Open())
-                {
-                    Console.WriteLine(ttsHandler.LastException.ToString());
-                    Console.WriteLine("Exception trying to open TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
-                }
+                ttsHandler.Open();
             }
 
             ActGlobals.oFormActMain.PlayTtsMethod = new FormActMain.PlayTtsDelegate(PlayTTS);
@@ -51,26 +47,30 @@ namespace LinuxTTSPlugin
         {
             ActGlobals.oFormActMain.PlayTtsMethod = oldTTSMethod;
 
-            if (!ttsHandler.Close()) { 
-                Console.WriteLine(ttsHandler.LastException.ToString());
-                Console.WriteLine("Exception trying to close TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
+            if (chkUsePipe.Checked)
+            {
+                if (!ttsHandler.Close())
+                {
+                    Console.WriteLine(ttsHandler.LastException.ToString());
+                    Console.WriteLine("Exception trying to close TTS Process:" + Environment.NewLine + Environment.NewLine + ttsHandler.LastException.ToString());
+                }
             }
-
             SaveSettings();
             lblStatus.Text = "Plugin Exited";
         }
 
         void PlayTTS(string text)
         {
-            if(chkUsePipe.Checked)
+            if (chkUsePipe.Checked)
             {
                 ttsHandler.Play(text);
-            } else
+            }
+            else
             {
                 ttsHandler.PlaySingle(text);
             }
         }
-        
+
         void LoadSettings()
         {
             // Add any controls you want to save the state of
