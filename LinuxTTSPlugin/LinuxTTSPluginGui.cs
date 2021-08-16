@@ -107,8 +107,8 @@ namespace LinuxTTSPlugin
             // 
             // lblTTSBinary
             // 
-            this.lblTTSBinary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTTSBinary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTTSBinary.AutoSize = true;
             this.lblTTSBinary.Location = new System.Drawing.Point(3, 50);
@@ -120,8 +120,8 @@ namespace LinuxTTSPlugin
             // 
             // lblArguments
             // 
-            this.lblArguments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblArguments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblArguments.AutoSize = true;
             this.lblArguments.Location = new System.Drawing.Point(3, 0);
@@ -133,8 +133,8 @@ namespace LinuxTTSPlugin
             // 
             // lblPipe
             // 
-            this.lblPipe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblPipe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPipe.AutoSize = true;
             this.lblPipe.Location = new System.Drawing.Point(3, 25);
@@ -146,8 +146,8 @@ namespace LinuxTTSPlugin
             // 
             // txtTTSBinaryPath
             // 
-            this.txtTTSBinaryPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtTTSBinaryPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTTSBinaryPath.Location = new System.Drawing.Point(75, 50);
             this.txtTTSBinaryPath.Name = "txtTTSBinaryPath";
@@ -158,8 +158,8 @@ namespace LinuxTTSPlugin
             // 
             // btnSelectBinary
             // 
-            this.btnSelectBinary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnSelectBinary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelectBinary.Location = new System.Drawing.Point(525, 60);
             this.btnSelectBinary.Name = "btnSelectBinary";
@@ -182,7 +182,7 @@ namespace LinuxTTSPlugin
             // 
             // chkUsePipe
             // 
-            this.chkUsePipe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.chkUsePipe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.chkUsePipe.AutoSize = true;
             this.chkUsePipe.Location = new System.Drawing.Point(75, 30);
@@ -245,7 +245,7 @@ namespace LinuxTTSPlugin
         private TabPage tpLog;
         private ListBox lstLogs;
         private OpenFileDialog opnTTS;
-        
+
         private void BtnSelectBinary_Click(object sender, EventArgs e)
         {
             opnTTS.ShowDialog();
@@ -266,7 +266,8 @@ namespace LinuxTTSPlugin
             if (chkUsePipe.Checked)
             {
                 ttsHandler.Restart();
-            } else
+            }
+            else
             {
                 ttsHandler.Close();
             }
