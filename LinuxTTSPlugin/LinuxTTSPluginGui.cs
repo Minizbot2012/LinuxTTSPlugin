@@ -239,7 +239,7 @@ namespace LinuxTTSPlugin
             this.chkUsePipe.UseVisualStyleBackColor = true;
             this.chkUsePipe.CheckedChanged += new System.EventHandler(this.ChkUsePipe_CheckedChanged);
             // 
-            // chkUseSock
+            // chkUseSocket
             // 
             this.chkUseSocket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
@@ -347,10 +347,10 @@ namespace LinuxTTSPlugin
 
         private void ChkUsePipe_CheckedChanged(object sender, EventArgs e)
         {
-            if (!chkUseSock.Checked && chkUsePipe.Checked)
+            if (!chkUseSocket.Checked && chkUsePipe.Checked)
             {
                 ttsHandler.Restart();
-            } else if(chkUseSock.Checked) {
+            } else if(chkUseSocket.Checked) {
                 ttsHandler.Close();
                 ttsHandler.Command = txtHost.Text;
                 ttsHandler.CommandArguments = txtPort.Text;
