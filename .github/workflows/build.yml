@@ -18,5 +18,7 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build -c Release
-      - name: publish
-        run: dotnet publish
+      - uses: actions/upload-artifact@v2
+        with:
+        name: LinuxTTSPlugin.dll
+        path: LinuxTTSPlugin/bin/Release/net472/LinuxTTSPlugin.dll
