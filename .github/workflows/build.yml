@@ -1,9 +1,5 @@
-
-name: Create GitHub release
-
+name: Build and Upload Artifact
 on: workflow_dispatch
-
-
 jobs:
   Build:
     runs-on: windows-latest
@@ -20,5 +16,5 @@ jobs:
         run: dotnet build -c Release
       - uses: actions/upload-artifact@v2
         with:
-        name: LinuxTTSPlugin.dll
-        path: LinuxTTSPlugin/bin/Release/net472/LinuxTTSPlugin.dll
+          name: LinuxTTSPlugin.dll
+          path: LinuxTTSPlugin/bin/Release/net472/LinuxTTSPlugin.dll
