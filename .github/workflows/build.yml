@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Download ACT
         run: |
-          Invoke-WebRequest -Uri https://advancedcombattracker.com/download.php?id=56 -OutFile latest.zip
+          Invoke-WebRequest -Uri https://advancedcombattracker.com/download.php?id=57 -OutFile latest.zip
           Expand-Archive -Force latest.zip "LinuxTTSPlugin/ExternalLibraries"   
       - name: Restore
         run: dotnet restore
