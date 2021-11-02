@@ -5,7 +5,7 @@ on: workflow_dispatch
 
 
 jobs:
-  Create_GitHub_release:
+  Build:
     runs-on: windows-latest
 
     steps:
