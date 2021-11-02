@@ -2,8 +2,7 @@
 name: Create GitHub release
 
 on:
-  repository_dispatch:
-    types: [create-github-release]
+  dispatch:
 
 
 jobs:
