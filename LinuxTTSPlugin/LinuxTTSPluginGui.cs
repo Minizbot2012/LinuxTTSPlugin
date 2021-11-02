@@ -350,7 +350,9 @@ namespace LinuxTTSPlugin
             if (!chkUseSocket.Checked && chkUsePipe.Checked)
             {
                 ttsHandler.Restart();
-            } else if(chkUseSocket.Checked) {
+            }
+            else if (chkUseSocket.Checked)
+            {
                 ttsHandler.Close();
                 ttsHandler.Command = txtHost.Text;
                 ttsHandler.CommandArguments = txtPort.Text;

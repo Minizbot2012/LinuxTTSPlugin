@@ -80,7 +80,8 @@ namespace LinuxTTSPlugin
             }
         }
 
-        public void PlaySocket(string text) {
+        public void PlaySocket(string text)
+        {
             UdpClient uc = new UdpClient();
             uc.SendAsync(Encoding.UTF8.GetBytes(text.ToLower()), Encoding.UTF8.GetByteCount(text.ToLower()), Command, 5555);
         }
