@@ -43,7 +43,11 @@ namespace LinuxTTSPlugin
             this.txtTTSBinaryPath = new System.Windows.Forms.TextBox();
             this.btnSelectBinary = new System.Windows.Forms.Button();
             this.txtArguments = new System.Windows.Forms.TextBox();
+            this.txtHost = new System.Windows.Forms.TextBox();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.lblUseSocket = new System.Windows.Forms.Label();
             this.chkUsePipe = new System.Windows.Forms.CheckBox();
+            this.chkUseSocket = new System.Windows.Forms.CheckBox();
             this.tpLog = new System.Windows.Forms.TabPage();
             this.lstLogs = new System.Windows.Forms.ListBox();
             this.tabs.SuspendLayout();
@@ -83,10 +87,10 @@ namespace LinuxTTSPlugin
             // 
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Controls.Add(this.lblTTSBinary, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblArguments, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblPipe, 0, 1);
@@ -94,14 +98,20 @@ namespace LinuxTTSPlugin
             this.tableLayoutPanel1.Controls.Add(this.btnSelectBinary, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtArguments, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.chkUsePipe, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chkUseSocket, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblUseSocket, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtHost, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtPort, 1, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(680, 360);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -144,6 +154,19 @@ namespace LinuxTTSPlugin
             this.lblPipe.Text = "Use Pipe";
             this.lblPipe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // lblPipe
+            // 
+            this.lblUseSocket.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUseSocket.AutoSize = true;
+            this.lblUseSocket.Location = new System.Drawing.Point(3, 25);
+            this.lblUseSocket.Name = "lblPipe";
+            this.lblUseSocket.Size = new System.Drawing.Size(70, 25);
+            this.lblUseSocket.TabIndex = 5;
+            this.lblUseSocket.Text = "Use Socket";
+            this.lblUseSocket.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // txtTTSBinaryPath
             // 
             this.txtTTSBinaryPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -153,8 +176,32 @@ namespace LinuxTTSPlugin
             this.txtTTSBinaryPath.Name = "txtTTSBinaryPath";
             this.txtTTSBinaryPath.ReadOnly = true;
             this.txtTTSBinaryPath.Size = new System.Drawing.Size(440, 20);
-            this.txtTTSBinaryPath.TabIndex = 9;
+            this.txtTTSBinaryPath.TabIndex = 7;
             this.txtTTSBinaryPath.Text = "Z:\\usr\\bin\\espeak";
+            // 
+            // txtHost
+            // 
+            this.txtHost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHost.Location = new System.Drawing.Point(75, 50);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.ReadOnly = true;
+            this.txtHost.Size = new System.Drawing.Size(440, 20);
+            this.txtHost.TabIndex = 8;
+            this.txtHost.Text = "127.0.0.1";
+            // 
+            // txtPort
+            // 
+            this.txtPort.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPort.Location = new System.Drawing.Point(75, 50);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.ReadOnly = true;
+            this.txtPort.Size = new System.Drawing.Size(440, 20);
+            this.txtPort.TabIndex = 9;
+            this.txtPort.Text = "5555";
             // 
             // btnSelectBinary
             // 
@@ -191,6 +238,18 @@ namespace LinuxTTSPlugin
             this.chkUsePipe.TabIndex = 12;
             this.chkUsePipe.UseVisualStyleBackColor = true;
             this.chkUsePipe.CheckedChanged += new System.EventHandler(this.ChkUsePipe_CheckedChanged);
+            // 
+            // chkUseSock
+            // 
+            this.chkUseSocket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkUseSocket.AutoSize = true;
+            this.chkUseSocket.Location = new System.Drawing.Point(75, 30);
+            this.chkUseSocket.Name = "chkUseSock";
+            this.chkUseSocket.Size = new System.Drawing.Size(20, 20);
+            this.chkUseSocket.TabIndex = 13;
+            this.chkUseSocket.UseVisualStyleBackColor = true;
+            this.chkUseSocket.CheckedChanged += new System.EventHandler(this.ChkUseSocket_CheckChanged);
             // 
             // tpLog
             // 
@@ -238,10 +297,14 @@ namespace LinuxTTSPlugin
         private Label lblTTSBinary;
         private Label lblArguments;
         private Label lblPipe;
+        private Label lblUseSocket;
         private TextBox txtTTSBinaryPath;
+        private TextBox txtHost;
+        private TextBox txtPort;
         private Button btnSelectBinary;
         private TextBox txtArguments;
         private CheckBox chkUsePipe;
+        private CheckBox chkUseSocket;
         private TabPage tpLog;
         private ListBox lstLogs;
         private OpenFileDialog opnTTS;
@@ -261,11 +324,36 @@ namespace LinuxTTSPlugin
             }
         }
 
+        private void ChkUseSocket_CheckChanged(object sender, EventArgs eventArgs)
+        {
+            if (chkUsePipe.Checked && chkUseSocket.Checked)
+            {
+                ttsHandler.Close();
+                ttsHandler.Command = txtHost.Text;
+                ttsHandler.CommandArguments = txtPort.Text;
+            }
+            else if (chkUsePipe.Checked && !chkUseSocket.Checked)
+            {
+                ttsHandler.Command = txtTTSBinaryPath.Text;
+                ttsHandler.CommandArguments = txtArguments.Text;
+                ttsHandler.Open();
+            }
+            else
+            {
+                ttsHandler.Command = txtTTSBinaryPath.Text;
+                ttsHandler.CommandArguments = txtArguments.Text;
+            }
+        }
+
         private void ChkUsePipe_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkUsePipe.Checked)
+            if (!chkUseSock.Checked && chkUsePipe.Checked)
             {
                 ttsHandler.Restart();
+            } else if(chkUseSock.Checked) {
+                ttsHandler.Close();
+                ttsHandler.Command = txtHost.Text;
+                ttsHandler.CommandArguments = txtPort.Text;
             }
             else
             {

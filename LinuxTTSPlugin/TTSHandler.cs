@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Net.Sockets;
+using System.Text;
 using System.Windows.Forms;
 
 namespace LinuxTTSPlugin
@@ -76,6 +78,11 @@ namespace LinuxTTSPlugin
                 Console.WriteLine(ex.ToString());
                 this.LastException = ex;
             }
+        }
+
+        public void PlaySocket(string text) {
+            UdpClient uc = new UdpClient();
+            uc.SendAsync(Encoding.UTF8.GetBytes(text.ToLower()), Encoding.UTF8.GetByteCount(text.ToLower()), Command, 5555);
         }
 
         public void PlaySingle(string text)

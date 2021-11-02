@@ -1,0 +1,20 @@
+
+name: Create GitHub release
+
+on:
+  repository_dispatch:
+    types: [create-github-release]
+
+
+jobs:
+  Create_GitHub_release:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Restore
+        run: dotnet restore
+      - name: Build
+        run: dotnet build -c Release
+      - name: publish
+        run: dotnet publish
