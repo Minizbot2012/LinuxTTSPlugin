@@ -302,6 +302,12 @@ namespace LinuxTTSPlugin
                 ttsHandler.Close();
                 txtTTSBinaryPath.ReadOnly = false;
                 chkUsePipe.Checked = false;
+                txtArguments.ReadOnly = true;
+                lblTTSBinary.Text = "Socket Mode: TTSServer Address (IP Only)";
+            } else {
+                lblTTSBinary.Text = "TTS Binary";
+                txtArguments.ReadOnly = false;
+                txtTTSBinaryPath.ReadOnly = true;
             }
         }
 
@@ -311,7 +317,14 @@ namespace LinuxTTSPlugin
             {
                 ttsHandler.Restart();
                 txtTTSBinaryPath.ReadOnly = true;
+                txtArguments.ReadOnly = false;
                 chkUseSocket.Checked = false;
+                lblTTSBinary.Text = "Pipe mode: TTS Binary";
+            } else {
+                ttsHandler.Close();
+                txtTTSBinaryPath.ReadOnly = true;
+                txtArguments.ReadOnly = false;
+                lblTTSBinary.Text = "TTS Binary";
             }
         }
 
