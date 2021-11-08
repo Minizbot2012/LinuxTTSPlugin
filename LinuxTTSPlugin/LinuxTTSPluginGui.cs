@@ -43,8 +43,6 @@ namespace LinuxTTSPlugin
             this.txtTTSBinaryPath = new System.Windows.Forms.TextBox();
             this.btnSelectBinary = new System.Windows.Forms.Button();
             this.txtArguments = new System.Windows.Forms.TextBox();
-            this.txtHost = new System.Windows.Forms.TextBox();
-            this.txtPort = new System.Windows.Forms.TextBox();
             this.lblUseSocket = new System.Windows.Forms.Label();
             this.chkUsePipe = new System.Windows.Forms.CheckBox();
             this.chkUseSocket = new System.Windows.Forms.CheckBox();
@@ -87,21 +85,19 @@ namespace LinuxTTSPlugin
             // 
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.lblTTSBinary, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblTTSBinary, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblArguments, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblPipe, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtTTSBinaryPath, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnSelectBinary, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtArguments, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblPipe, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.chkUsePipe, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.chkUseSocket, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lblUseSocket, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtHost, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.txtPort, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblUseSocket, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.chkUseSocket, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtTTSBinaryPath, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnSelectBinary, 2, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -178,30 +174,7 @@ namespace LinuxTTSPlugin
             this.txtTTSBinaryPath.Size = new System.Drawing.Size(440, 20);
             this.txtTTSBinaryPath.TabIndex = 7;
             this.txtTTSBinaryPath.Text = "Z:\\usr\\bin\\espeak";
-            // 
-            // txtHost
-            // 
-            this.txtHost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtHost.Location = new System.Drawing.Point(75, 50);
-            this.txtHost.Name = "txtHost";
-            this.txtHost.ReadOnly = true;
-            this.txtHost.Size = new System.Drawing.Size(440, 20);
-            this.txtHost.TabIndex = 8;
-            this.txtHost.Text = "127.0.0.1";
-            // 
-            // txtPort
-            // 
-            this.txtPort.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPort.Location = new System.Drawing.Point(75, 50);
-            this.txtPort.Name = "txtPort";
-            this.txtPort.ReadOnly = true;
-            this.txtPort.Size = new System.Drawing.Size(440, 20);
-            this.txtPort.TabIndex = 9;
-            this.txtPort.Text = "5555";
+            this.txtTTSBinaryPath.Leave += new System.EventHandler(this.TxtBinaryPath_Leave);
             // 
             // btnSelectBinary
             // 
@@ -299,8 +272,6 @@ namespace LinuxTTSPlugin
         private Label lblPipe;
         private Label lblUseSocket;
         private TextBox txtTTSBinaryPath;
-        private TextBox txtHost;
-        private TextBox txtPort;
         private Button btnSelectBinary;
         private TextBox txtArguments;
         private CheckBox chkUsePipe;
@@ -326,51 +297,36 @@ namespace LinuxTTSPlugin
 
         private void ChkUseSocket_CheckChanged(object sender, EventArgs eventArgs)
         {
-            if (chkUsePipe.Checked && chkUseSocket.Checked)
+            if (chkUseSocket.Checked)
             {
                 ttsHandler.Close();
-                ttsHandler.Command = txtHost.Text;
-                ttsHandler.CommandArguments = txtPort.Text;
-            }
-            else if (chkUsePipe.Checked && !chkUseSocket.Checked)
-            {
-                ttsHandler.Command = txtTTSBinaryPath.Text;
-                ttsHandler.CommandArguments = txtArguments.Text;
-                ttsHandler.Open();
-            }
-            else
-            {
-                ttsHandler.Command = txtTTSBinaryPath.Text;
-                ttsHandler.CommandArguments = txtArguments.Text;
+                txtTTSBinaryPath.ReadOnly = false;
+                chkUsePipe.Checked = false;
             }
         }
 
         private void ChkUsePipe_CheckedChanged(object sender, EventArgs e)
         {
-            if (!chkUseSocket.Checked && chkUsePipe.Checked)
+            if (chkUsePipe.Checked)
             {
                 ttsHandler.Restart();
-            }
-            else if (chkUseSocket.Checked)
-            {
-                ttsHandler.Close();
-                ttsHandler.Command = txtHost.Text;
-                ttsHandler.CommandArguments = txtPort.Text;
-            }
-            else
-            {
-                ttsHandler.Close();
+                txtTTSBinaryPath.ReadOnly = true;
+                chkUseSocket.Checked = false;
             }
         }
 
         private void TxtArguments_Leave(object sender, EventArgs e)
         {
             ttsHandler.CommandArguments = txtArguments.Text;
-            if (chkUsePipe.Checked)
+            if (chkUsePipe.Checked && !chkUseSocket.Checked)
             {
                 ttsHandler.CommandArguments += " --stdin";
                 ttsHandler.Restart();
             }
+        }
+        private void TxtBinaryPath_Leave(object sender, EventArgs e)
+        {
+            ttsHandler.Command = txtTTSBinaryPath.Text;
         }
     }
 }
