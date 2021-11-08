@@ -62,6 +62,10 @@ namespace LinuxTTSPlugin
             {
                 ttsHandler.Play(text);
             }
+            else if (chkUseSocket.Checked)
+            {
+                ttsHandler.PlaySocket(text);
+            }
             else
             {
                 ttsHandler.PlaySingle(text);
@@ -75,8 +79,6 @@ namespace LinuxTTSPlugin
             xmlSettings.AddControlSetting(chkUsePipe.Name, chkUsePipe);
             xmlSettings.AddControlSetting(txtTTSBinaryPath.Name, txtTTSBinaryPath);
             xmlSettings.AddControlSetting(chkUseSocket.Name, chkUseSocket);
-            xmlSettings.AddControlSetting(txtHost.Name, txtHost);
-            xmlSettings.AddControlSetting(txtPort.Name, txtPort);
             if (File.Exists(settingsFile))
             {
                 FileStream fs = new FileStream(settingsFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);

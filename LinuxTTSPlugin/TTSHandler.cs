@@ -16,6 +16,7 @@ namespace LinuxTTSPlugin
         private Process process = null;
         private FileInfo CommandInfo;
         private ListBox log;
+        UdpClient uc = new UdpClient();
         public TTSHandler(ListBox log)
         {
             this.log = log;
@@ -82,8 +83,15 @@ namespace LinuxTTSPlugin
 
         public void PlaySocket(string text)
         {
-            UdpClient uc = new UdpClient();
-            uc.SendAsync(Encoding.UTF8.GetBytes(text.ToLower()), Encoding.UTF8.GetByteCount(text.ToLower()), Command, 5555);
+            try
+            {
+                uc.SendAsync(Encoding.UTF8.GetBytes(text.ToLower()), Encoding.UTF8.GetByteCount(text.ToLower()), Command, 5555);
+            }
+            catch (Exception e)
+            {
+                log.Items.Add(e.ToString());
+                this.LastException = e;
+            }
         }
 
         public void PlaySingle(string text)
